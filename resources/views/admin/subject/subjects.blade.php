@@ -9,11 +9,11 @@
 <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 <link href="https://cdn.datatables.net/buttons/1.6.4/css/buttons.bootstrap.css" rel="stylesheet">
 
-     
+
 <div class="content-body">
     <!-- row -->
     <div class="container-fluid">
-            
+
         <div class="row page-titles mx-0">
             <div class="col-sm-6 p-md-0">
                 <div class="welcome-text">
@@ -27,9 +27,9 @@
                 </ol>
             </div>
         </div>
-        
+
         <div class="row">
-          
+
             <div class="col-lg-12">
                 <div class="row tab-content">
                     <div id="list-view" class="tab-pane fade active show col-lg-12">
@@ -52,26 +52,36 @@
                                             </tr>
                                         </thead>
                                         <tbody>
-                                     
+
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
-       
+
     </div>
 </div>
 
-  
 
 
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.18/pdfmake.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.bootstrap.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.js"></script>
 
 <script type="text/javascript">
     $(function () {
@@ -147,7 +157,7 @@
               {data:'subject_name',name:'subject_name'},
               {data:'subject_bangla_name',name:'subject_bangla_name'},
               {data:'subject_image',name:'subject_image'},
-         
+
             {
 
                 data: 'status',
@@ -175,32 +185,19 @@
   </script>
 
 
+
 <script src="{{asset('assets/admin/js/admin.js')}}"></script>
 
 <script src="{{asset('assets/admin/js/advanced-form-element.js')}}"></script>
 <script src="{{asset('assets/admin/js/select2.full.js')}}"></script>
-
-
 <script src="{{asset('assets/admin/js/single_image_preview.js')}}"></script>
-<script src="{{asset('assets/admin/js/select2.full.js')}}"></script>
-<script src="{{asset('assets/admin/js/advanced-form-element.js')}}"></script>
 
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.18/pdfmake.min.js"></script>
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.66/vfs_fonts.js"></script>
-
-<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.4/js/dataTables.buttons.min.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.bootstrap.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.html5.js"></script>
-<script src="https://cdn.datatables.net/buttons/1.2.4/js/buttons.print.js"></script>
 
 @endsection
-		
 
-     
+
+
 

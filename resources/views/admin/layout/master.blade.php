@@ -4,7 +4,7 @@
 
 <!-- Mirrored from edumin.dexignlab.com/xhtml/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Dec 2020 15:51:24 GMT -->
 <head>
-	
+
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -17,7 +17,7 @@
 	<link rel="stylesheet" href="{{asset('assets/admin/vendor/datatables/css/jquery.dataTables.min.css')}}">
     {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> --}}
 
- 
+
 
 </head>
 <body>
@@ -72,8 +72,8 @@
         ***********************************-->
 
       @include('admin.layout.sidebar')
-   
-		
+
+
 		<!--**********************************
             Content body start
         ***********************************-->
@@ -110,16 +110,16 @@
     ***********************************-->
 
     <!--**********************************
-        
+
         Scripts
     ***********************************-->
     <!-- Required vendors -->
     <script src="{{asset('assets/admin/vendor/global/global.min.js')}}"></script>
-	<script src="{{asset('assets/admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script>
+	{{-- <script src="{{asset('assets/admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script> --}}
 	<script src="{{asset('assets/admin/js/custom.min.js')}}"></script>
-	<script src="{{asset('assets/admin/js/dlabnav-init.js')}}"></script>
+	{{-- <script src="{{asset('assets/admin/js/dlabnav-init.js')}}"></script> --}}
 
-		
+
     <!-- Chart Morris plugin files -->
     <script src="{{asset('assets/admin/vendor/raphael/raphael.min.js')}}"></script>
     <script src="{{asset('assets/admin/vendor/morris/morris.min.js')}}"></script>
@@ -128,26 +128,26 @@
      <script src="{{asset('assets/admin/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
      <script src="{{asset('assets/admin/js/plugins-init/datatables.init.js')}}"></script>
 
-   
-	
+
+
 	<!-- Chart piety plugin files -->
     <script src="{{asset('assets/admin/vendor/peity/jquery.peity.min.js')}}"></script>
-	
+
 		<!-- Demo scripts -->
     <script src="{{asset('assets/admin/js/dashboard/dashboard-2.js')}}"></script>
-	
+
 	<!-- Svganimation scripts -->
     <script src="{{asset('assets/admin/vendor/svganimation/vivus.min.js')}}"></script>
     <script src="{{asset('assets/admin/vendor/svganimation/svg.animation.js')}}"></script>
     <script src="{{asset('assets/admin/js/styleSwitcher.js')}}"></script>
 
-    
 
 
-        
 
-		
-	
+
+
+
+
 </body>
 
 <!-- Mirrored from edumin.dexignlab.com/xhtml/index-2.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 20 Dec 2020 15:51:27 GMT -->
