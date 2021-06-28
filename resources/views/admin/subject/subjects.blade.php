@@ -154,15 +154,29 @@
           columns: [
               {data: 'sl_no', name: 'sl_no'},
 
-              {data:'subject_name',name:'subject_name'},
-              {data:'subject_bangla_name',name:'subject_bangla_name'},
-              {data:'subject_image',name:'subject_image'},
+              {
+              data:'subject_name',
+              name:'subject_name'
+              },
+
+              {
+                  
+              data:'subject_bangla_name',
+              name:'subject_bangla_name'
+              },
+
+
+              {
+
+              data:'subject_image',
+              name:'subject_image'
+
+              },
 
             {
 
                 data: 'status',
                 name: 'status',
-
 
             },
 

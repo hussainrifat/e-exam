@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables;
 
+
 use DB;
 
 class subjectController extends Controller
@@ -90,41 +91,7 @@ class subjectController extends Controller
 
     public function getAllSubjects(Request $request)
     {
-        // $subjects = subject::all();
-
-        // return Datatables::of($subjects)
-        // ->addIndexColumn()
-        // ->editColumn('created_at', function ($subject) {
-        //     return date_format($subject->created_at, 'D, F j, Y g:i a');
-        // })
-        // ->addColumn('action', function ($subject) {
-        //     $updateUrl = url('admin/subject/edit', [$subject->id]);
-        //     $subjectDetails = url('admin/subject/subjectDetails', [$subject->id]);
-
-
-        //     $markup = '';
-
-        //     $markup .= ' <a href="' . $updateUrl . '" class="btn btn-sm btn-info"
-        // data-toggle="tooltip" data-placement="top" title="Edit Medicine"><i
-        // class="fa fa-pencil" aria-hidden="true"></i></a>';
-
-        //     $markup .= ' <a href="' . $subjectDetails . '" class="btn btn-sm btn-info"
-        // data-toggle="tooltip" data-placement="top" title="Medicine Details"><i
-        // class="fa fa-eye" aria-hidden="true"></i></a>';
-
-
-        //     $markup .= ' <button class="btn btn-sm btn-danger" data-toggle="tooltip" data-placement="top" title="Delete"
-        // onclick="deleteMedicine(' . $subject->id . ')"><i
-        // class="fa fa-trash-o" aria-hidden="true"></i></button>';
-
-
-        //     return $markup;
-        // })
-        // ->rawColumns(['action'])
-        // ->make(true);
-
-
-
+       
         if ($request->ajax()) {
             $datas = subject::where('deleted_at',null)->get();
             $i=1;
@@ -135,7 +102,7 @@ class subjectController extends Controller
                     $data['checked'] =$checked;
 
                 }
-
+                
             return Datatables::of($datas)
                     ->addIndexColumn()
                     ->addColumn('status', function($datas){
@@ -194,8 +161,6 @@ class subjectController extends Controller
                     $button .= ' <a href="javascript:void(0);" class="btn btn-sm btn-danger" onclick="access_alert()"><i class="la la-trash-o"></i></a>';
                     return $button;
              })
-
-
                     ->rawColumns(['status','subject_name','subject_bangla_name','subject_image','action'])
                     ->make(true);
         }
