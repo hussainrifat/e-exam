@@ -67,16 +67,16 @@ class subjectController extends Controller
             }
             
             $image = time() . '.' . request()->subject_image->getClientOriginalExtension();
-            $request->subject_image->move(public_path('../image/product_image') , $image);
-            $image = "image/product_image/" . $image;
+            $request->subject_image->move(public_path('../image/subject_image') , $image);
+            $image = "image/subject_image/" . $image;
         
         // dd($request->subject_image);
             $subject = subject::create([
                 'subject_name' => $request->subject_name,
                 'subject_name_bangla' => $request->subject_name_bangla,
-                'subject_image' => $request->subject_image,
+                'subject_image' => $image,
             ]);
-            return redirect()->route('subjects')->with('success','Subject Added Successfully');
+            return redirect()->route('getAllSubjects')->with('success','Subject Added Successfully');
 
     }
 
@@ -112,55 +112,18 @@ class subjectController extends Controller
                             return $switch;
                     })
 
-                    ->addColumn('subject_name', function($datas){
-                        $permission = $this->permission();
-    
-                        if(in_array('product_edit',$permission))
-                        $column = '<p onclick='.'edit('. $datas->id.',"subject_name")'.'>'. $datas->subject_name .'</p>';
-                        else
-                        $column = '<p>'. $datas->subject_name .'</p>';
-    
-                         return $column;
-                     })
-
-
-                     ->addColumn('subject_bangla_name', function($datas){
-                        $permission = $this->permission();
-    
-                        if(in_array('product_edit',$permission))
-                        $column = '<p onclick='.'edit('. $datas->id.',"subject_bangla_name")'.'>'. $datas->subject_bangla_name .'</p>';
-                        else
-                        $column = '<p>'. $datas->subject_bangla_name .'</p>';
-    
-                         return $column;
-                     })
-
                  
-                 ->addColumn('subject_image', function($datas){
-                    $permission = $this->permission();
-              
-                    if(in_array('product_edit',$permission))
-                    {
-                    $column = '<img onclick='.'edit('. $datas->id.',"subject_image")'.'  src="../'.$datas->subject_image.'"  width="100px" class="img-thumbnail product-image" />';
-                    }
-                    else
-                    $column = '<img   src="../'.$datas->subject_image.'" width="100px" class="img-thumbnail" />';
-                     return $column;
-                 })
-
-
              
                  ->addColumn('action', function($data){
 
-                    $permission = $this->permission();
                     $button = '';
-
-                    if(in_array('category_delete',$permission))
-                    $button .= ' <a href="javascript:void(0);" class="btn btn-sm btn-danger" onclick="product_content_delete('.$data->id.')"><i class="la la-trash-o"></i></a>';
-                    else
-                    $button .= ' <a href="javascript:void(0);" class="btn btn-sm btn-danger" onclick="access_alert()"><i class="la la-trash-o"></i></a>';
+                    
+                    $button .= ' <a href="edit-subject/'.$data->id.'" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>';
+                    $button .= ' <a href="javascript:void(0);" class="btn btn-sm btn-danger" onclick="delete-subject('.$data->id.')"><i class="la la-trash-o"></i></a>';
+                    
                     return $button;
              })
+
                     ->rawColumns(['status','subject_name','subject_bangla_name','subject_image','action'])
                     ->make(true);
         }

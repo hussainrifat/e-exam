@@ -36,7 +36,7 @@
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">Topic </h4>
-                                <a href="{{url('admin/add-topic')}}" class="btn btn-primary">+ Add new</a>
+                                <a href="{{url('admin/add-subject')}}" class="btn btn-primary">+ Add new</a>
                             </div>
                             <div class="card-body">
                                 <div class="table-responsive">
@@ -46,7 +46,7 @@
                                                 <th>SL No</th>
                                                 <th>Subject Name</th>
                                                 <th>Subject Bangla Name</th>
-                                                <th>Subject Bangla Name</th>
+                                                <th>Subject Image</th>
                                                 <th>Active Status</th>
                                                 <th>Action</th>
                                             </tr>
@@ -161,15 +161,21 @@
 
               {
                   
-              data:'subject_bangla_name',
-              name:'subject_bangla_name'
+              data:'subject_name_bangla',
+              name:'subject_name_bangla'
               },
 
 
               {
 
-              data:'subject_image',
-              name:'subject_image'
+       
+                data: 'subject_image',
+                name: 'subject_image',
+                render: function(data, type, full, meta){
+
+                return "<img src=../" + data + " width='100px' class='img-thumbnail' />";
+                },
+                orderable: false
 
               },
 
@@ -181,11 +187,8 @@
             },
 
                 {
-
                 data: 'action',
                 name: 'action',
-
-
                 },
 
           ],

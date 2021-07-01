@@ -60,18 +60,12 @@
 											<div class="form-group">
 												<div class="field">
 													<label class="form-label">Subject Image</label>
-													<input type="file" id="single_files" id="subject_image" name="subject_image"  />
+													<input type="file" id="subject_image" name="subject_image"  />
 												</div>
 											</div>
 										</div>
 
-										{{-- <div class="col-lg-6 col-md-6 col-sm-12">
-											<div class="form-group">
-												<label class="form-label">Active Status</label>
-												<input type="text" class="form-control">
-											</div>
-										</div> --}}
-										
+								
 									
 										<div class="col-lg-12 col-md-12 col-sm-12">
 											
