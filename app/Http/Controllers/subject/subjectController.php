@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Illuminate\Support\Facades\Validator;
 use Yajra\DataTables\DataTables;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 
 use DB;
@@ -119,7 +120,7 @@ class subjectController extends Controller
                     $button = '';
                     
                     $button .= ' <a href="edit-subject/'.$data->id.'" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>';
-                    $button .= ' <a href="javascript:void(0);" class="btn btn-sm btn-danger" onclick="delete-subject('.$data->id.')"><i class="la la-trash-o"></i></a>';
+                    $button .= ' <a href="delete-subject/'.$data->id.'" class="btn btn-sm btn-danger" ><i class="la la-trash-o"></i></a>';
                     
                     return $button;
              })
@@ -129,6 +130,36 @@ class subjectController extends Controller
         }
 
         return view('admin.subject.subjects');
+    }
+
+
+    public function editSubject($id){
+        $subject = subject::findorfail($id);
+
+        
+
+        return view('admin.subject.edit-subject',compact('subject'));
+    }
+
+
+    public function updateSubject(Request $request)
+    {
+        $id = $request->id;
+
+        subject::where('id',$id)->update([
+            'subject_name'          =>   $request->subject_name   ,
+            'subject_name_bangla'   =>    $request->subject_name_bangla   
+        ]);
+        return view('admin.subject.subjects');
+
+    }
+
+    public function deleteSubject($id){
+
+        $id = subject:: find($id);
+        
+        $id->delete();
+        return redirect()->back();
     }
 
 }

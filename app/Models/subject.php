@@ -4,10 +4,14 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 
 class subject extends Model
 {
     use HasFactory;
+    use SoftDeletes;
+
 
     protected $fillable = [
         'subject_name',
@@ -15,7 +19,7 @@ class subject extends Model
         'subject_image',
     ];
 
-
+ 
        /**
      * 
      * validation start here
