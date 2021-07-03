@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Topic\TopicController;
+use App\Http\Controllers\subject\subjectController;
+use App\Http\Controllers\student\studentController;
+use App\Http\Controllers\report\reportController;
+use App\Http\Controllers\Question\QuestionController;
+
 
 /*
 |--------------------------------------------------------------------------
