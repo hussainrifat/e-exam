@@ -23,7 +23,7 @@ class subjectController extends Controller
      * @return  view with compact array
      *
      */
-    
+
     // public function viewAllSubjects()
     // {
     //     return view('admin.subject.subjects');
@@ -53,7 +53,7 @@ class subjectController extends Controller
                  'subject_name_bangla'=>'required',
                  'subject_image'=>'required',
             ];
-        
+
         $customMessages = [
                 'subject_name.required' => 'Subject Name field is required.',
                 'subject_name_bangla.required' => 'Subject Bangla Name field is required.',
@@ -66,11 +66,11 @@ class subjectController extends Controller
             {
                 return redirect()->back()->withInput()->with('errors',collect($validator->errors()->all()));
             }
-            
+
             $image = time() . '.' . request()->subject_image->getClientOriginalExtension();
             $request->subject_image->move(public_path('../image/subject_image') , $image);
             $image = "image/subject_image/" . $image;
-        
+
         // dd($request->subject_image);
             $subject = subject::create([
                 'subject_name' => $request->subject_name,
@@ -85,14 +85,14 @@ class subjectController extends Controller
 
     // public function viewAllSubjects()
     // {
-        
+
     //     return view('admin.subject.subjects');
 
     // }
 
     public function getAllSubjects(Request $request)
     {
-       
+
         if ($request->ajax()) {
             $datas = subject::where('deleted_at',null)->get();
             $i=1;
@@ -103,7 +103,7 @@ class subjectController extends Controller
                     $data['checked'] =$checked;
 
                 }
-                
+
             return Datatables::of($datas)
                     ->addIndexColumn()
                     ->addColumn('status', function($datas){
@@ -113,17 +113,17 @@ class subjectController extends Controller
                             return $switch;
                     })
 
-                 
-             
+
+
                  ->addColumn('action', function($data){
 
                     $button = '';
-                    
+
                     $button .= ' <a href="edit-subject/'.$data->id.'" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>';
-               
+
 
                     $button .= ' <a href="javascript:void(0);" class="btn btn-sm btn-danger" onclick="subject_delete('.$data->id.')"><i class="la la-trash-o"></i></a>';
-                    
+
                     return $button;
              })
 
@@ -138,7 +138,7 @@ class subjectController extends Controller
     public function editSubject($id){
         $subject = subject::findorfail($id);
 
-        
+
 
         return view('admin.subject.edit-subject',compact('subject'));
     }
@@ -150,7 +150,7 @@ class subjectController extends Controller
 
         subject::where('id',$id)->update([
             'subject_name'          =>   $request->subject_name   ,
-            'subject_name_bangla'   =>    $request->subject_name_bangla   
+            'subject_name_bangla'   =>    $request->subject_name_bangla
         ]);
         return view('admin.subject.subjects');
 
@@ -159,7 +159,7 @@ class subjectController extends Controller
     public function deleteSubject($id){
 
         $id = subject:: find($id);
-        
+
         $id->delete();
         return redirect()->back();
     }

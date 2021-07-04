@@ -160,7 +160,7 @@
               },
 
               {
-                  
+
               data:'subject_name_bangla',
               name:'subject_name_bangla'
               },
@@ -168,7 +168,7 @@
 
               {
 
-       
+
                 data: 'subject_image',
                 name: 'subject_image',
                 render: function(data, type, full, meta){
@@ -206,7 +206,7 @@
 
 
 
-<script src="{{asset('assets/admin/js/admin.js')}}"></script>
+<script src="{{asset('assets')}}/admin/js/admin.js?{{ time() }}"></script>
 
 <script src="{{asset('assets/admin/js/advanced-form-element.js')}}"></script>
 <script src="{{asset('assets/admin/js/select2.full.js')}}"></script>
