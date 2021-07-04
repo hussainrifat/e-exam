@@ -35,10 +35,10 @@ Route::view('/', 'admin.dashboard');
 // include "admin/reportRoute.php";
 
 
-Route::get('admin/subjects',[subjectController::class,'getAllSubjects'])->name('getAllSubjects');
-// Route::get('admin/subjects',[subjectController::class,'viewAllSubjects'])->name('subjects');
+// Subjects Route
 
-// Route::post('admin/subjects',[subjectController::class,'viewAllSubjects'])->name('subjects');
+Route::get('admin/subjects',[subjectController::class,'getAllSubjects'])->name('getAllSubjects');
+
 Route::get('admin/add-subject',[subjectController::class,'viewInsertSubject']);
 Route::post('admin/subject/insert',[subjectController::class,'subjectInsert'])->name('add-subject');
 
@@ -47,14 +47,19 @@ Route::post('admin/subject/',[subjectController::class,'updateSubject'])->name('
 Route::get('admin/edit-subject/{id}',[subjectController::class,'editSubject']);
 
 
-
+// Students Route
 Route::get('admin/students',[studentController::class,'viewAllStudents']);
 Route::get('admin/add-student',[studentController::class,'studentInsertView']);
 
+
+// Reports Route
 Route::get('admin/reports',[reportController::class,'viewAllReports']);
 Route::get('admin/add-report',[reportController::class,'viewInsertReport']);
 
+
+// Questions Route
 Route::get('admin/questions',[QuestionController::class,'viewAllQuestion']);
 Route::get('admin/add-student',[QuestionController::class,'studentInsertView']);
 
+// Home Content Route
 Route::view('admin/home-content', 'admin.home-content.home');

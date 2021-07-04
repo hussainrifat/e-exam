@@ -19,6 +19,7 @@ class CreateSubjectsTable extends Migration
             $table->string('subject_name');
             $table->string('subject_name_bangla');
             $table->string('subject_image');
+            $table->string('active_status')->default("1");
             $table->softDeletes();
             $table->timestamps();
         });

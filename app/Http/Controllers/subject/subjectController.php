@@ -98,7 +98,7 @@ class subjectController extends Controller
             $i=1;
                 foreach($datas as $data)
                 {
-                    $checked = $data->status=='1'?'checked':'';
+                    $checked = $data->active_status=='1'?'checked':'';
                     $data['sl_no'] = $i++;
                     $data['checked'] =$checked;
 
@@ -108,7 +108,7 @@ class subjectController extends Controller
                     ->addIndexColumn()
                     ->addColumn('status', function($datas){
 
-                           $switch = "<label class='switch'> <input onclick='category_active_status(".$datas->id.")' type='checkbox'".$datas->checked."  /> <span class='slider round'></span> </label>";
+                           $switch = "<label class='switch'> <input onclick='active_status(".$datas->id.")' type='checkbox'".$datas->checked."  /> <span class='slider round'></span> </label>";
 
                             return $switch;
                     })
@@ -120,7 +120,9 @@ class subjectController extends Controller
                     $button = '';
                     
                     $button .= ' <a href="edit-subject/'.$data->id.'" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>';
-                    $button .= ' <a href="delete-subject/'.$data->id.'" class="btn btn-sm btn-danger" ><i class="la la-trash-o"></i></a>';
+               
+
+                    $button .= ' <a href="javascript:void(0);" class="btn btn-sm btn-danger" onclick="subject_delete('.$data->id.')"><i class="la la-trash-o"></i></a>';
                     
                     return $button;
              })
