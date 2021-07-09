@@ -43,8 +43,12 @@ Route::get('admin/add-subject',[subjectController::class,'viewInsertSubject']);
 Route::post('admin/subject/insert',[subjectController::class,'subjectInsert'])->name('add-subject');
 
 Route::get('admin/delete-subject/{id}',[subjectController::class,'deleteSubject']);
-Route::post('admin/subject/',[subjectController::class,'updateSubject'])->name('update-subject');
+
 Route::get('admin/edit-subject/{id}',[subjectController::class,'editSubject']);
+Route::post('admin/subject/',[subjectController::class,'updateSubject'])->name('update-subject');
+
+Route::get('admin/subject_active_status/{id}',[subjectController::class,'subjectActiveStatus']);
+
 
 
 // Students Route
@@ -63,3 +67,16 @@ Route::get('admin/add-student',[QuestionController::class,'studentInsertView']);
 
 // Home Content Route
 Route::view('admin/home-content', 'admin.home-content.home');
+
+// Topic Route
+// Route::get('admin/topics',[TopicController::class,'viewAllTopics'])->name('viewAllTopics');
+Route::get('admin/add-topic',[TopicController::class,'viewInsertTopic']);
+Route::Post('admin/topic/insert',[TopicController::class,'topicInsert'])->name('add-topic');
+Route::get('admin/topics',[TopicController::class,'getAllTopics'])->name('getAllTopics');
+Route::get('admin/delete-subject/{id}',[TopicController::class,'deleteTopic']);
+Route::get('admin/topic_active_status/{id}',[TopicController::class,'topicActiveStatus']);
+
+Route::get('admin/edit-topic/{id}',[TopicController::class,'editTopic']);
+Route::post('admin/topic/',[TopicController::class,'updateTopic'])->name('update-topic');
+
+

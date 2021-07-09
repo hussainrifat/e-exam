@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\subject;
 
 
 class subject extends Model
@@ -20,15 +21,9 @@ class subject extends Model
     ];
 
  
-       /**
-     * 
-     * validation start here
-     * @var array
-     */
-
-    public static $insertRules=[
-        'subject_name'          => 'required|string|min:3',
-        'subject_image'         => 'required|string|min:3',
-     ];
+  
+     function getSubjectInfo(){
+        return $this->hasMany(subject::class,'subject_id','id');
+    }
 
 }

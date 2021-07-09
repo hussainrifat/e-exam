@@ -21,14 +21,14 @@
 				<div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
-                            <h4>Add Topics</h4>
+                            <h4>Edit Topics</h4>
                         </div>
                     </div>
                     <div class="col-sm-6 p-md-0 justify-content-sm-end mt-2 mt-sm-0 d-flex">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Topics</a></li>
-                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Add Topics</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Topic</a></li>
+                            <li class="breadcrumb-item active"><a href="javascript:void(0);">Edit Topic</a></li>
                         </ol>
                     </div>
                 </div>
@@ -38,29 +38,24 @@
                         <div class="card">
                          
 							<div class="card-body">
-                                <form action="{{route('add-topic')}}"  method="post" enctype="multipart/form-data">
+                                <form action="{{route('update-topic')}}"  method="post" enctype="multipart/form-data">
 									@csrf
 									<div class="row">
-										
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Subject Name</label>
-												<select name="subject_id" class="form-control">
-													@foreach ($subjects as $sub)
-													<option  value="{{$sub->id}}">{{$sub->subject_name}}</option>
+												<input type="text" name="subject_name" value="{{$topics->getSubjectInfo->subject_name}}" class="form-control" disabled>
+                                                <input type="hidden" name="id" value="{{$topics->id}}" class="form-control">
 
-													@endforeach
-												</select>
 											</div>
 										</div>
 
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Topic Name</label>
-												<input type="text" name="topic_name" class="form-control">
+												<input type="text" name="topic_name" value="{{$topics->topic_name}}" class="form-control">
 											</div>
 										</div>
-
 									
 
 										<div class="col-lg-12 col-md-12 col-sm-12">
@@ -68,7 +63,7 @@
 											<button id="btn-subject-insert" type="submit" class="btn btn-primary save__btn"
 											data-loading-text="<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span> Saving..."
 											data-normal-text="Add Subject">
-											<span class="ui-button-text">Add Topic</span>
+											<span class="ui-button-text">Update Topic</span>
 										</button>
 
 										</div>

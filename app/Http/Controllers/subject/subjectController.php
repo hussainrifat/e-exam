@@ -39,14 +39,6 @@ class subjectController extends Controller
 
 
 
-     /**
-     * @name medicineInsertAjax
-     * @role insert a medicine record into database
-     * @param Request $request
-     * @return  Json response
-     *
-     * @throws Illuminate\Validation\ValidationException
-     */
     public function subjectInsert(Request $request)
     {
         $insertRules = ['subject_name'=>'required',
@@ -83,56 +75,56 @@ class subjectController extends Controller
 
 
 
-    // public function viewAllSubjects()
-    // {
+     /**
+         * @name getAllSubjects
+         * @role view all subject into datatable
+         * @param Request $request
+         * @return  view
+         *
+         */
+        public function getAllSubjects(Request $request)
+        {
 
-    //     return view('admin.subject.subjects');
+            if ($request->ajax()) {
+                $datas = subject::where('deleted_at',null)->get();
+                $i=1;
+                    foreach($datas as $data)
+                    {
+                        $checked = $data->active_status=='1'?'checked':'';
+                        $data['sl_no'] = $i++;
+                        $data['checked'] =$checked;
 
-    // }
+                    }
 
-    public function getAllSubjects(Request $request)
-    {
+                return Datatables::of($datas)
+                        ->addIndexColumn()
+                        ->addColumn('status', function($datas){
 
-        if ($request->ajax()) {
-            $datas = subject::where('deleted_at',null)->get();
-            $i=1;
-                foreach($datas as $data)
-                {
-                    $checked = $data->active_status=='1'?'checked':'';
-                    $data['sl_no'] = $i++;
-                    $data['checked'] =$checked;
+                            $switch = "<label class='switch'> <input onclick='subject_active_status(".$datas->id.")' type='checkbox'".$datas->checked."  /> <span class='slider round'></span> </label>";
 
-                }
-
-            return Datatables::of($datas)
-                    ->addIndexColumn()
-                    ->addColumn('status', function($datas){
-
-                           $switch = "<label class='switch'> <input onclick='active_status(".$datas->id.")' type='checkbox'".$datas->checked."  /> <span class='slider round'></span> </label>";
-
-                            return $switch;
-                    })
-
-
-
-                 ->addColumn('action', function($data){
-
-                    $button = '';
-
-                    $button .= ' <a href="edit-subject/'.$data->id.'" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>';
+                                return $switch;
+                        })
 
 
-                    $button .= ' <a href="javascript:void(0);" class="btn btn-sm btn-danger" onclick="subject_delete('.$data->id.')"><i class="la la-trash-o"></i></a>';
 
-                    return $button;
-             })
+                    ->addColumn('action', function($data){
 
-                    ->rawColumns(['status','subject_name','subject_bangla_name','subject_image','action'])
-                    ->make(true);
+                        $button = '';
+
+                        $button .= ' <a href="edit-subject/'.$data->id.'" class="btn btn-sm btn-primary"><i class="la la-pencil"></i></a>';
+
+
+                        $button .= ' <a href="javascript:void(0);" class="btn btn-sm btn-danger" onclick="subject_delete('.$data->id.')"><i class="la la-trash-o"></i></a>';
+
+                        return $button;
+                })
+
+                        ->rawColumns(['status','subject_name','subject_bangla_name','subject_image','action'])
+                        ->make(true);
+            }
+
+            return view('admin.subject.subjects');
         }
-
-        return view('admin.subject.subjects');
-    }
 
 
     public function editSubject($id){
@@ -144,17 +136,59 @@ class subjectController extends Controller
     }
 
 
-    public function updateSubject(Request $request)
-    {
-        $id = $request->id;
 
-        subject::where('id',$id)->update([
-            'subject_name'          =>   $request->subject_name   ,
-            'subject_name_bangla'   =>    $request->subject_name_bangla
-        ]);
-        return view('admin.subject.subjects');
 
+        public function updateSubject(Request $request)
+        {
+            $id = $request->id;
+
+            subject::where('id',$id)->update([
+                'subject_name'          =>   $request->subject_name   ,
+                'subject_name_bangla'   =>    $request->subject_name_bangla
+            ]);
+            return view('admin.subject.subjects');
+
+        }
+
+
+
+        /**
+         * @name subjectActiveStatus
+         * @role change subject active status
+         * @param Request $request
+         * @return  view
+         *
+         */
+    public function subjectActiveStatus($id){
+       
+        $status = subject::where('id',$id)->first()->active_status;
+
+        if($status == 1)
+        {
+            subject::where('id',$id)->update([
+                'active_status'   => 0
+            ]);
+        }
+
+        else
+        {
+            subject::where('id',$id)->update([
+                'active_status'   => 1
+            ]);
+        }
+
+       
     }
+
+
+
+      /**
+         * @name deleteSubject
+         * @role delete a subject
+         * @param Request $request
+         * @return  view
+         *
+         */
 
     public function deleteSubject($id){
 
