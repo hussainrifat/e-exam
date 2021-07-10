@@ -5,13 +5,26 @@ $(function() {
         }
     });
 
-  
 
-    // $('.category').on('change', function() {
+    fetch_subject();
 
-    //     var category_id = this.value;
+    function fetch_subject(){
+        $.ajax({
+            processData:false,
+            contentType:false,
+            type: 'GET',
+            url : 'get_subject',
+            success: function(data){
+                $('#subject_name').html(data);
+            }
+        })
+    }
+
+    // $('.subject_name').on('change', function() {
+
+    //     var subject_id = this.value;
     //     var formdata = new FormData();
-    //     formdata.append('category_id', category_id);
+    //     formdata.append('subject_id', subject_id);
 
     //     $.ajax({
     //         processData: false,
@@ -31,13 +44,14 @@ $(function() {
     // });
 
   
+  
 
 })
 
 
 // Delete A Subject
 function subject_delete(id){
-    var conf = confirm('Are You Sure');
+    var conf = confirm('Are You Sure to delete this subject?');
 
     if (conf==true)
     {

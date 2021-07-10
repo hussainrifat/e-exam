@@ -63,7 +63,10 @@ Route::get('admin/add-report',[reportController::class,'viewInsertReport']);
 
 // Questions Route
 Route::get('admin/questions',[QuestionController::class,'viewAllQuestion']);
-Route::get('admin/add-student',[QuestionController::class,'studentInsertView']);
+Route::get('admin/add-question',[QuestionController::class,'questionInsertView']);
+Route::get('get_subject',[QuestionController::class,'getSubject']);
+
+
 
 // Home Content Route
 Route::view('admin/home-content', 'admin.home-content.home');
@@ -73,10 +76,11 @@ Route::view('admin/home-content', 'admin.home-content.home');
 Route::get('admin/add-topic',[TopicController::class,'viewInsertTopic']);
 Route::Post('admin/topic/insert',[TopicController::class,'topicInsert'])->name('add-topic');
 Route::get('admin/topics',[TopicController::class,'getAllTopics'])->name('getAllTopics');
-Route::get('admin/delete-subject/{id}',[TopicController::class,'deleteTopic']);
+Route::get('admin/delete-topic/{id}',[TopicController::class,'deleteTopic']);
 Route::get('admin/topic_active_status/{id}',[TopicController::class,'topicActiveStatus']);
 
 Route::get('admin/edit-topic/{id}',[TopicController::class,'editTopic']);
 Route::post('admin/topic/',[TopicController::class,'updateTopic'])->name('update-topic');
+
 
 

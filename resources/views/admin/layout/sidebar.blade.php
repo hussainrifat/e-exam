@@ -43,8 +43,8 @@
 						</a>
                         <ul aria-expanded="false">
                             <li><a href="{{url('admin/questions')}}">Question</a></li>
-                            <li><a href="add-library.html">Add Question</a></li>
-                            <li><a href="edit-library.html">All Question</a></li>
+                            <li><a href="{{url('admin/add-question')}}">Add Question</a></li>
+                            <li><a href="{{url('admin/questions')}}">All Question</a></li>
                         </ul>
                     </li>
 					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">
