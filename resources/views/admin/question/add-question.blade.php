@@ -1,14 +1,19 @@
 
 @extends('admin.layout.master')
+@section('page_css')
+<link rel="stylesheet" href="{{asset('assets')}}/admin/css/select2.min.css?{{time()}}" />
+<link rel="stylesheet" href="{{asset('assets')}}/admin/css/select2_custom.css?{{time()}}" />
+@endsection
 @section('content')
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
+
 
 
 
         <div class="content-body">
             <!-- row -->
             <div class="container-fluid">
-				
+
 				<div class="row page-titles mx-0">
                     <div class="col-sm-6 p-md-0">
                         <div class="welcome-text">
@@ -23,20 +28,20 @@
                         </ol>
                     </div>
                 </div>
-				
+
 				<div class="row">
 					<div class="col-xl-12 col-xxl-12 col-sm-12">
                         <div class="card">
-                         
+
 							<div class="card-body">
                                 <form action="#" method="post">
 									<div class="row">
-										
+
 										<div class="col-lg-6 col-md-6 col-sm-12">
 										<div class="form-group">
 											<label>Subject Name</label>
 											<select class="form-control select2" id="subject_name"  name="subject_name">
-											
+
 											</select>
 										</div>
 										</div>
@@ -44,7 +49,7 @@
 											<div class="form-group">
 												<label>Topic Name</label>
 												<select class="form-control select2" id="topic_name" name="topic_name">
-												
+
 												</select>
 											</div>
 											</div>
@@ -92,8 +97,8 @@
 											</div>
 										</div>
 
-								
-									
+
+
 										<div class="col-lg-12 col-md-12 col-sm-12">
 											<button type="submit" class="btn btn-primary">Add Question</button>
 										</div>
@@ -103,10 +108,15 @@
                         </div>
                     </div>
 				</div>
-                
+
             </div>
         </div>
 
-		<script src="{{asset('assets')}}/admin/js/admin.js?{{ time() }}"></script>
 
+        @endsection
+
+        @section("page_js")
+        <script src="{{asset('assets')}}/admin/js/select2.full.js?{{ time() }}"></script>
+        <script src="{{asset('assets')}}/admin/js/advanced-form-element.js?{{ time() }}"></script>
+		<script src="{{asset('assets')}}/admin/js/admin.js?{{ time() }}"></script>
         @endsection

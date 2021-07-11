@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="{{asset('assets/admin/css/style.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/admin/css/skin.css')}}">
 	<link rel="stylesheet" href="{{asset('assets/admin/vendor/datatables/css/jquery.dataTables.min.css')}}">
+    @yield('page_css')
     {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> --}}
 
 
@@ -114,10 +115,9 @@
         Scripts
     ***********************************-->
     <!-- Required vendors -->
-    <script src="{{asset('assets/admin/vendor/global/global.min.js')}}"></script>
-	{{-- <script src="{{asset('assets/admin/vendor/bootstrap-select/dist/js/bootstrap-select.min.js')}}"></script> --}}
-	<script src="{{asset('assets/admin/js/custom.min.js')}}"></script>
-	{{-- <script src="{{asset('assets/admin/js/dlabnav-init.js')}}"></script> --}}
+    <script src="{{asset('assets')}}/admin/vendor/global/global.min.js?{{time()}}"></script>
+
+	<script src="{{asset('assets')}}/admin/js/custom.min.js?{{time()}}"></script>
 
 
     <!-- Chart Morris plugin files -->
@@ -141,7 +141,7 @@
     <script src="{{asset('assets/admin/vendor/svganimation/svg.animation.js')}}"></script>
     <script src="{{asset('assets/admin/js/styleSwitcher.js')}}"></script>
 
-
+    @yield('page_js')
 
 
 
