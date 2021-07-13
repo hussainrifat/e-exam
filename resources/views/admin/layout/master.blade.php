@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>E - Exam</title>
     <!-- Favicon icon -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
 	<link rel="stylesheet" href="{{asset('assets/admin/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}">
     <link rel="stylesheet" href="{{asset('assets/admin/css/style.css')}}">

@@ -1,5 +1,7 @@
 
 @extends('admin.layout.master')
+
+
 @section('page_css')
 <link rel="stylesheet" href="{{asset('assets')}}/admin/css/select2.min.css?{{time()}}" />
 <link rel="stylesheet" href="{{asset('assets')}}/admin/css/select2_custom.css?{{time()}}" />
@@ -34,7 +36,8 @@
                         <div class="card">
 
 							<div class="card-body">
-                                <form action="#" method="post">
+                                <form action="{{route('add-question')}}" method="post">
+									@csrf
 									<div class="row">
 
 										<div class="col-lg-6 col-md-6 col-sm-12">
@@ -93,7 +96,14 @@
 										<div class="col-lg-6 col-md-6 col-sm-12">
 											<div class="form-group">
 												<label class="form-label">Correct Answer</label>
-												<input type="text" class="form-control">
+												<select class="form-control select2" id="correct_ans" name="correct_ans">
+													<option value="1"> Option 1</option>
+													<option value="2"> Option 2</option>
+													<option value="3"> Option 3</option>
+													<option value="4"> Option 4</option>
+												</select>
+
+
 											</div>
 										</div>
 

@@ -9,42 +9,44 @@ $(function() {
     fetch_subject();
 
     function fetch_subject(){
+
         $.ajax({
-            processData:false,
-            contentType:false,
+            processData: false,
+            contentType: false,
             type: 'GET',
             url : 'get_subject',
-            success: function(data){
+            success: function(data) {
+                
                 $('#subject_name').html(data);
+    
             }
         })
     }
 
-    // $('.subject_name').on('change', function() {
+    $('#subject_name').on('change', function() {
 
-    //     var subject_id = this.value;
-    //     var formdata = new FormData();
-    //     formdata.append('subject_id', subject_id);
+        //alert("Working");
+        var subject_id = this.value;
+        var formdata = new FormData();
+        // alert(subject_id);
+        formdata.append('subject_id', subject_id);
 
-    //     $.ajax({
-    //         processData: false,
-    //         contentType: false,
-    //         type: 'post',
-    //         data: formdata,
-    //         url: 'get_sub_category',
-    //         success: function(data) {
+        $.ajax({
+            processData: false,
+            contentType: false,
+            type: 'post',
+            data: formdata,
+            url: 'get_topic',
+            success: function(data) {
+
+                $('#topic_name').html(data);
 
 
-    //             $('.sub_category').html(data);
+            }
+        })
 
+    });
 
-    //         }
-    //     })
-
-    // });
-
-  
-  
 
 })
 

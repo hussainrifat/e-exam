@@ -21,4 +21,8 @@ class topic extends Model
     function getSubjectInfo(){
         return $this->belongsTo(subject::class,'subject_id','id');
     }
+
+    function getTopicInfo(){
+        return $this->hasMany(topic::class,'topic_id','id');
+    }
 }

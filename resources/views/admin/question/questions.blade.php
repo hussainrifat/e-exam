@@ -1,6 +1,12 @@
 @extends('admin.layout.master')
 @section('content')
 
+@section('page_css')
+<link rel="stylesheet" href="{{asset('assets')}}/admin/css/select2.min.css?{{time()}}" />
+<link rel="stylesheet" href="{{asset('assets')}}/admin/css/select2_custom.css?{{time()}}" />
+@endsection
+@section('content')
+
 <div class="content-body">
     <div class="container-fluid">
          <!-- row -->
@@ -12,41 +18,30 @@
 
             <div class="col-lg-6 col-md-6 col-sm-6">
 
-              
+                <form action="{{route('view-question')}}" method="post">
+                    @csrf
                 
                 <div class="form-group">
                     <label>Subject Name</label>
-                    <select class="form-control select2"  name="product_id">
-                        <option disabled selected>Select Subject</option>
-                            <option value="">A</option>
-                            <option value="">B</option>
-                            <option value="">C</option>
-                            <option value="">D</option>
-                            <option value="">E</option>
-                            <option value="">F</option>
-
+                    <select class="form-control select2" id="subject_name"  name="subject_name">
                     </select>
+                    
                 </div>
 
                 <div class="form-group">
                         <label>Topic Name</label>
-                        <select class="form-control select2" id="sub_category" name="sub_category_id">
-                            <option>Select Category First</option>
-                            <option value="">A</option>
-                            <option value="">B</option>
-                            <option value="">C</option>
-                            <option value="">D</option>
-                            <option value="">E</option>
-                            <option value="">F</option>
+                        <select class="form-control select2" id="topic_name" name="topic_name">
+
                         </select>
                     </div>
 
 
                 <div class="form-group">
-                    <button type="button" class="btn btn-danger">Submit <span class="btn-icon-right"><i
+                    <button type="submit" class="btn btn-danger">Submit <span class="btn-icon-right"><i
                         class="fa fa-check"></i></span>
             </button>
                 </div>
+                </form>
             </div>
           
         </div>
@@ -55,6 +50,13 @@
 </div>
 
         @endsection
+
+        @section("page_js")
+        <script src="{{asset('assets')}}/admin/js/select2.full.js?{{ time() }}"></script>
+        <script src="{{asset('assets')}}/admin/js/advanced-form-element.js?{{ time() }}"></script>
+		<script src="{{asset('assets')}}/admin/js/admin.js?{{ time() }}"></script>
+        @endsection
+
 		
      
 
