@@ -64,7 +64,7 @@ Route::get('admin/add-report',[reportController::class,'viewInsertReport']);
 // Questions Route
 Route::get('admin/questions',[QuestionController::class,'viewAllQuestion']);
 Route::get('admin/add-question',[QuestionController::class,'questionInsertView']);
-Route::get('get_subject',[QuestionController::class,'getSubject']);
+Route::get('admin/get_subject',[QuestionController::class,'getSubject']);
 
 
 
